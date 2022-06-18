@@ -1,17 +1,28 @@
-import Cppkies from "cppkies"
+import { Achievement, gardenEffects, hooks, Mod, Upgrade } from "cppkies"
+import { name, version, ccrepo } from "../package.json"
 
-Cppkies.onLoad.push(() => {
-	new Cppkies.Upgrade("Hello, World!", "My first upgrade!", 7, [10, 5])
+new Mod(
+	{
+		keyname: name,
+		version: version,
+		icon: ccrepo.icon as [number, number],
+		name: ccrepo.name,
+	},
+	function () {
+		// Read the docs at https://cppkies.js.org/
+		new Upgrade("Hello, World!", "My first upgrade!", 7, [10, 5])
 
-	Game.Unlock("Hello, World!")
+		Game.Unlock("Hello, World!")
 
-	new Cppkies.Achievement(
-		"Hello, New World!",
-		"Buy the <b>Hello, World!</b> upgrade!",
-		[10, 5]
-	)
+		new Achievement(
+			"Hello, New World!",
+			"Buy the <b>Hello, World!</b> upgrade!",
+			[10, 5]
+		)
 
-	Cppkies.on("check", () => {
-		if (Game.Has("Hello, World!")) Game.Win("Hello, New World!")
-	})
-})
+		hooks.on("check", () => {
+			if (Game.Has("Hello, World!")) Game.Win("Hello, New World!")
+		})
+		console.log(gardenEffects)
+	}
+)
