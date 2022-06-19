@@ -151,6 +151,47 @@ new Mod(
 			"replace"
 		)
 		//#endregion
+		//#region Itchy fingers
+		const itchyFingersHU = new HeavenlyUpgrade(
+			"Itchy fingers",
+			'Unlocks the <b>Itchy finger toggle</b>, which makes clicking <b>twice</b> as powerful, but makes Golden cookies and Reindeer spawn half as much. <q>for those that take the "clicker" part of "cookie clicker" more seriously than others.</q>',
+			555_555_000,
+			[1, 1],
+			[-17, -350],
+			["Halo gloves"]
+		)
+		const itchyFingersOn = new Upgrade(
+			"Itchy fingers [on]",
+			"Itchy fingers are <b>on</b>, making clicking <b>twice</b> as powerful. Golden cookies and Reindeer appear half as much.",
+			() => Game.unbuffedCps * 60 * 60 * 2,
+			[1, 1],
+			Game.CalculateGains
+		) as Game.LayeredSwitch
+		itchyFingersOn.pool = "toggle"
+		itchyFingersOn.toggleInto = "Itchy fingers [off]"
+		const itchyFingersOff = new Upgrade(
+			"Itchy fingers [off]",
+			"Turning this on will make clicking <b>twice</b> as powerful, but Golden cookies and Reindeer will appear half as much.",
+			() => Game.unbuffedCps * 60 * 60 * 2,
+			[1, 2],
+			Game.CalculateGains
+		) as Game.LayeredSwitch
+		itchyFingersOff.pool = "toggle"
+		itchyFingersOff.toggleInto = "Itchy fingers [on]"
+		itchyFingersOff.order = itchyFingersOn.order = 40080
+		hooks.on("cpc", cpc => cpc * (itchyFingersOff.bought ? 2 : 1))
+		hooks.on("effs", () =>
+			itchyFingersOff.bought
+				? { goldenCookieFreq: 0.5, wrathCookieFreq: 0.5, reindeerFreq: 0.5 }
+				: {}
+		)
+		hooks.on("reincarnate", () => {
+			if (itchyFingersHU.bought) {
+				itchyFingersOn.earn()
+				itchyFingersOff.unlock()
+			}
+		})
+		//#endregion
 		//#region Lump booster
 		const lumpBoosterHU = new HeavenlyUpgrade(
 			"Lump booster",
