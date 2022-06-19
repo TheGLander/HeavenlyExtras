@@ -168,10 +168,10 @@ commander@^2.20.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
-cppkies@0.3.0-alpha3:
-  version "0.3.0-alpha3"
-  resolved "https://registry.yarnpkg.com/cppkies/-/cppkies-0.3.0-alpha3.tgz#6a6f689e3ae69e025aca15c2dcc68767486bad25"
-  integrity sha512-hBPXdA45ShfevYB6dSCjR5a+b/fFrirURuPZNYtCai1AMlM4SoQ6BFfuS3v8ZUngigLKUSfSyO3cwFRnYPQA7A==
+cppkies@0.3.0-alpha5:
+  version "0.3.0-alpha5"
+  resolved "https://registry.yarnpkg.com/cppkies/-/cppkies-0.3.0-alpha5.tgz#451c57ef74f36042731d251e0cb8a512cae640ad"
+  integrity sha512-+be8Er9R5X5g7WT2DdAt+WkLYe8CpjszMdtRSevx4tVVaFORSqPN9ZJCm8tUF8g9DsLz3GQLFYOwbjW2oIuoHw==
 
 escape-string-regexp@^1.0.5:
   version "1.0.5"
